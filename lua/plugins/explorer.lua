@@ -10,10 +10,14 @@ end
 return {
   "folke/snacks.nvim",
   opts = {
-    picker = {
-      sources = {
-        explorer = {
-          hidden = true,
+      picker = {
+        sources = {
+          files = {
+            hidden = true,
+          },
+          explorer = {
+            hidden = true,
+            ignored = true,
         },
       },
       previewers = {
@@ -27,5 +31,10 @@ return {
   keys = {
     { "<leader>bd", function() Snacks.bufdelete() end, desc = "Delete Buffer (Preserve Layout)" },
     { "<leader>e", focus_or_toggle_explorer, desc = "Explorer Snacks (root dir)" },
+    {
+      "<leader>fF",
+      function() Snacks.picker.files({ root = false, hidden = true, ignored = true }) end,
+      desc = "Find Files (cwd, incl. untracked/gitignored)",
+    },
   },
 }
