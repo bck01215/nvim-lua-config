@@ -8,8 +8,12 @@
 -- VSCode Cmd+K S: save all open buffers
 vim.keymap.set("n", "<leader>fA", "<cmd>wa<cr>", { desc = "Save All" })
 
--- VSCode "mk12.better-git-line-blame": toggle inline current-line blame
-vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<cr>", { desc = "Toggle Git Blame Line" })
+-- Toggle current-line blame in the bottom status bar.
+vim.keymap.set("n", "<leader>gB", "<cmd>Gitsigns toggle_current_line_blame<cr>", { desc = "Toggle Status Bar Git Blame" })
+
+vim.keymap.set("n", "<leader>gm", function()
+  require("config.gitlab-mr").open()
+end, { desc = "Open GitLab MR for Commit" })
 
 -- VSCode terminal Shift+Enter: send newline without submitting (useful inside
 -- the Claude Code / OpenCode floating terminals for multi-line input)

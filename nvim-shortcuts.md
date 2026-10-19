@@ -10,7 +10,8 @@ toggleterm (Claude Code / OpenCode), gitsigns.
 | `<leader>ac` | Toggle Claude Code floating terminal |
 | `<leader>ao` | Toggle OpenCode floating terminal |
 | `<leader>fA` | Save all open buffers |
-| `<leader>gB` | Toggle inline git blame for current line |
+| `<leader>gB` | Toggle bottom-right status bar blame for current line |
+| `<leader>gm` | Open GitLab MR for SHA under cursor or current line's commit |
 | `<leader>bd` | Delete buffer, preserve window layout |
 | `<leader>e` | Focus/toggle Snacks explorer (root dir) |
 | `<S-CR>` (terminal mode) | Newline without submitting (great inside Claude/OpenCode) |
@@ -98,7 +99,8 @@ toggleterm (Claude Code / OpenCode), gitsigns.
 
 | Key | Action |
 |---|---|
-| `<leader>gB` | Toggle current-line blame (your custom — overrides LazyVim's "Git Browse") |
+| `<leader>gB` | Toggle status bar blame (your custom — overrides LazyVim's "Git Browse") |
+| `<leader>gm` | Open GitLab MR for SHA under cursor or current line's commit (requires authenticated `glab`) |
 | `<leader>gg` | Open lazygit (root dir) |
 | `<leader>gG` | Open lazygit (cwd) |
 | `<leader>gl` | Git log (root dir, picker) |

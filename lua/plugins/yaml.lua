@@ -6,6 +6,22 @@ return {
     opts = {
       servers = {
         yamlls = {
+          before_init = function(_, config)
+            local schemas = require("schemastore").yaml.schemas({
+              replace = {
+                ["Ansible Tasks File"] = {
+                  name = "Ansible Tasks File",
+                  url = "https://raw.githubusercontent.com/ansible/ansible-lint/main/src/ansiblelint/schemas/ansible.json#/$defs/tasks",
+                  fileMatch = { "**/handlers/*.yml", "**/handlers/*.yaml" },
+                },
+              },
+            })
+            config.settings.yaml.schemas = vim.tbl_deep_extend(
+              "force",
+              schemas,
+              config.settings.yaml.schemas or {}
+            )
+          end,
           settings = {
             yaml = {
               schemaStore = { enable = false, url = "" },
@@ -53,7 +69,13 @@ return {
                   ".gitlab/gitlab-ci/**/*",
                   ".gitlab-ci.yml",
                 },
-                ["https://taskfile.dev/schema.json"] = { "Taskfile.yml", "taskfile/*" },
+                ["https://taskfile.dev/schema.json"] = {
+                  "Taskfile.yml",
+                  "Taskfile.yaml",
+                  "taskfile/*",
+                  "**/tasks/**/*.yml",
+                  "**/tasks/**/*.yaml",
+                },
                 ["https://raw.githubusercontent.com/golangci/golangci-lint/refs/heads/main/jsonschema/golangci.jsonschema.json"] = {
                   ".golangci.yml",
                 },
